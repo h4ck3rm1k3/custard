@@ -823,3 +823,5 @@ if /staging|production/.test process.env.NODE_ENV
     setTimeout ->
       process.kill process.pid, 'SIGTERM'
     , 500
+
+exports.app = app
