@@ -121,10 +121,6 @@ class Cu.Router.Main extends Backbone.Router
     modelDone = model.fetch()
     $.when.apply( null, [modelDone, toolsDone] ).done =>
       views = model.get 'views'
-      unless @subnavView.currentView instanceof Cu.View.Toolbar
-        subnavView = new Cu.View.Toolbar {model: model}
-        @subnavView.showView subnavView
-        window.selectedTool = model
 
       setTimeout =>
         views.findByToolName 'datatables-view-tool', (dataTablesView) =>
@@ -168,7 +164,7 @@ class Cu.Router.Main extends Backbone.Router
         @appView.showView contentView
         contentView.showContent()
 
-        unless (@subnavView.currentView instanceof Cu.View.Toolbar and @subnavView.currentView.model == dataset)
+        unless @subnavView.currentView instanceof Cu.View.Toolbar
           subnavView = new Cu.View.Toolbar model: dataset, view: v
           @subnavView.showView subnavView
 
