@@ -129,12 +129,7 @@ class Cu.Router.Main extends Backbone.Router
       setTimeout =>
         views.findByToolName 'datatables-view-tool', (dataTablesView) =>
           if dataTablesView?
-            window.selectedTool = dataTablesView
-            subnavView = new Cu.View.Toolbar {model: model, view: dataTablesView}
-            @subnavView.showView subnavView
-            contentView = new Cu.View.PluginContent {model: dataTablesView}
-            @appView.showView contentView
-            contentView.showContent()
+            app.navigate "/dataset/#{model.id}/view/#{dataTablesView.id}", trigger: true
           else
             app.navigate "/dataset/#{model.id}/settings", trigger: true
       , 0
@@ -172,7 +167,8 @@ class Cu.Router.Main extends Backbone.Router
         contentView = new Cu.View.PluginContent model: v
         @appView.showView contentView
         contentView.showContent()
-        unless @subnavView.currentView instanceof Cu.View.Toolbar
+
+        unless (@subnavView.currentView instanceof Cu.View.Toolbar and @subnavView.currentView.model == dataset)
           subnavView = new Cu.View.Toolbar model: dataset, view: v
           @subnavView.showView subnavView
 
