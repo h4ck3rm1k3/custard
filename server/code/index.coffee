@@ -161,16 +161,20 @@ getEffectiveUser = (user, callback) ->
 
 # Verify callback for LocalStrategy
 verify = (username, password, callback) ->
+  console.log "passport: verify called username: #{username}"
   user = new User {shortName: username}
   user.checkPassword password, (err, user) ->
     if err
+      console.log "passport: verify checkPassword err: #{err.error}"
       return callback null, false, { message: err.error }
     if user
+      console.log "passport: verify checkPassword no error, user: #{user}"
       getEffectiveUser user, (effectiveUser) ->
         sessionUser =
           real: getSessionUser user
           effective: getSessionUser effectiveUser
         return callback null, sessionUser
+    console.log "passport: verify checkPassword no error, no user"
 
 app.configure ->
   app.use express.bodyParser()
