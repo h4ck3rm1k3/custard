@@ -1,48 +1,55 @@
 {
     "dataservices-ec2": {
-        "boxServer": "ds-ec2.scraperwiki.com",
+        "boxServers": ["ds-ec2.scraperwiki.com"],
         "maxDiskSpaceMB": 4000,
         "maxHourCPUPerDay": 2.0,
         "maxNumDatasets": 81,
         "$": true
     },
     "free": {
-        "boxServer": "free-ec2.scraperwiki.com",
+        "boxServers": ["free-ec2.scraperwiki.com"],
         "maxDiskSpaceMB": 8,
         "maxHourCPUPerDay": 0.5,
         "maxNumDatasets": 3,
         "$": false
     },
     "grandfather-ec2": {
-        "boxServer": "premium.scraperwiki.com",
+        "boxServers": ["premium.scraperwiki.com"],
         "maxDiskSpaceMB": 8000,
         "maxHourCPUPerDay": 0.5,
         "maxNumDatasets": 100,
         "$": false
     },
     "large-ec2": {
-        "boxServer": "premium.scraperwiki.com",
+        "boxServers": ["premium.scraperwiki.com"],
         "maxDiskSpaceMB": 256,
         "maxHourCPUPerDay": 0.5,
         "maxNumDatasets": 81,
         "$": true
     },
     "medium-ec2": {
-        "boxServer": "premium.scraperwiki.com",
+        "boxServers": ["premium.scraperwiki.com"],
         "maxDiskSpaceMB": 64,
         "maxHourCPUPerDay": 0.5,
         "maxNumDatasets": 10,
         "$": true
     },
     "journalist": {
-        "boxServer": "premium.scraperwiki.com",
+        "boxServers": ["premium.scraperwiki.com"],
         "maxDiskSpaceMB": 128,
         "maxHourCPUPerDay": 0.5,
         "maxNumDatasets": 25,
         "$": false
     },
     "opendata": {
-        "boxServer": "premium.scraperwiki.com",
+        "boxServers": ["premium.scraperwiki.com"],
+        "maxDiskSpaceMB": 128,
+        "maxHourCPUPerDay": 0.5,
+        "maxNumDatasets": 25,
+        "$": false
+    },
+    "test": {
+        "boxServers": ["test.example.com"],
         "maxDiskSpaceMB": 128,
         "maxHourCPUPerDay": 0.5,
         "maxNumDatasets": 25,

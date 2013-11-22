@@ -26,5 +26,5 @@ class exports.Plan
     else
       if process.env.CU_BOX_SERVER
         plan = _.clone(plan)
-        plan.boxServer = process.env.CU_BOX_SERVER
+        plan.boxServers = [process.env.CU_BOX_SERVER]
       return [null, plan]

@@ -117,7 +117,10 @@ class Box extends ModelBase
   @create: (user, callback) ->
     boxName = @_generateBoxName()
     [err_, plan] = Plan.getPlan user.accountLevel
-    server = plan?.boxServer
+
+    if plan
+        server = _.sample(plan.boxServers)
+
     if not server
       return callback
         statusCode: 500
@@ -171,7 +174,7 @@ class Box extends ModelBase
     if /testing|staging/.test process.env.NODE_ENV
       console.log process.env.CU_BOX_SERVER
       return [process.env.CU_BOX_SERVER]
-    _.uniq (obj.boxServer for plan, obj of plans)
+    _.uniq _.flatten (obj.boxServers for plan, obj of plans)
 
 
 exports.Box = Box

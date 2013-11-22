@@ -30,3 +30,7 @@ describe 'Plan (Server)', ->
           path: 'ehaf921'
           size: 8
       correctArgs.should.be.true
+
+  it 'Should contain an array of box servers', ->
+    [_, plan] = Plan.getPlan 'test'
+    plan.boxServers.should.eql ['test.example.com']
