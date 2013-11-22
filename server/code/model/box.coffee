@@ -141,13 +141,22 @@ class Box extends ModelBase
       uri.splice 3, 0, 'box'
       uri = uri.join '/'
       console.log "BOX CREATE posting to #{uri}"
+      console.log user.apikey
+      console.log box.uid
       request.post
         uri: uri
         form:
           apikey: user.apiKey
           uid: box.uid
       , (err, res, body) ->
-        box.boxJSON = JSON.parse body
+        console.log "!!!!TOM!!!!"
+        console.log "err", err
+        console.log "res", res.statusCode
+        console.log body
+        try
+            box.boxJSON = JSON.parse body
+        catch error
+            box.boxJSON = ''
         box.save (err) ->
           if err?
             callback err, null
@@ -157,6 +166,7 @@ class Box extends ModelBase
             Plan.setDiskQuota box, user.accountLevel, (err) ->
               console.warn "setDiskQuota on #{box.name} error: #{err}"
             callback null, box
+      console.log "XXXXXXXXXXXXXXXXXXXX"
 
   @_generateBoxName: ->
     r = Math.random() * Math.pow(10,9)
