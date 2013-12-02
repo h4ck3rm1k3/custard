@@ -20,7 +20,7 @@ describe 'View', ->
         link.click done
 
     before (done) ->
-      wd40.waitForVisibleByCss '#toolbar .tool[data-toolname="prune-graph"] .tool-icon', ->
+      browser.waitForVisibleByCss '#toolbar .tool[data-toolname="prune-graph"] .tool-icon', 4000, ->
         wd40.click '#toolbar .tool[data-toolname="prune-graph"] .tool-icon', done
 
     it 'takes me to the Graph of Prunes page', (done) ->
