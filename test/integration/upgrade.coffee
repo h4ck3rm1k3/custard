@@ -83,7 +83,9 @@ describe 'Upgrade from medium account to large account', ->
           wd40.click '.modal .btn', done
 
         it 'it closes the modal window', (done) ->
-          wd40.waitForInvisibleByCss '.modal', done
+          setTimeout ->
+            wd40.waitForInvisibleByCss '.modal', done
+            , 2000
 
         it 'it shows I am on the large plan', (done) ->
           wd40.elementByCss '.account-large .currentPlan', (err, span) ->
@@ -108,7 +110,9 @@ describe 'Upgrade from medium account to large account', ->
           wd40.click '.modal .btn', done
 
         it 'it closes the modal window', (done) ->
-          wd40.waitForInvisibleByCss '.modal', done
+          setTimeout ->
+            wd40.waitForInvisibleByCss '.modal', done
+            , 2000
 
         it 'it shows I am on the medium plan', (done) ->
           wd40.elementByCss '.account-medium .currentPlan', (err, span) ->
